@@ -17,7 +17,7 @@ const CONFIGS: Record<Difficulty, { rows: number; cols: number; mines: number }>
 const NUM_COLORS = ['','#3b82f6','#10b981','#ef4444','#8b5cf6','#dc2626','#06b6d4','#000','#6b7280'];
 
 function buildBoard(rows: number, cols: number, mines: number, safeIdx: number): CellState[][] {
-  const cells = Array.from({ length: rows * cols }, (_, i) => ({
+  const cells = Array.from({ length: rows * cols }, (_) => ({
     mine: false, revealed: false, flagged: false, adj: 0,
   }));
   let placed = 0;
@@ -115,7 +115,7 @@ export function MinesweeperGame() {
     setBoard(b);
   }, [board, status]);
 
-  const restart = (diff = difficulty) => {
+  const restart = (_diff = difficulty) => {
     setBoard(null);
     setStatus('idle');
     setFlagCount(0);
